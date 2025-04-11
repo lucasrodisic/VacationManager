@@ -1,0 +1,30 @@
+﻿@model IEnumerable<VacationManager.Models.Project>
+
+@{
+    ViewData["Title"] = "Проекти";
+}
+
+<div class="container mt-5">
+    <h2 class="section-title text-dark text-center mb-4">📁 Проекти</h2>
+
+    <div class="row">
+        @foreach (var project in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card p-3 shadow h-100 text-center">
+                    <h5 class="text-primary">@project.Name</h5>
+                    <p>@project.Description</p>
+                    <div class="d-flex justify-content-center gap-2 mt-2">
+                        <a class="btn btn-sm btn-outline-info" asp-action="Details" asp-route-id="@project.Id">Детайли</a>
+                        <a class="btn btn-sm btn-outline-warning" asp-action="Edit" asp-route-id="@project.Id">Редактирай</a>
+                        <a class="btn btn-sm btn-outline-danger" asp-action="Delete" asp-route-id="@project.Id">Изтрий</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="text-center mt-4">
+        <a class="btn btn-success btn-lg px-4" asp-action="Create">➕ Създай нов проект</a>
+    </div>
+</div>

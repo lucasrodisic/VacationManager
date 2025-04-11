@@ -1,0 +1,40 @@
+﻿@model VacationManager.Models.VacationRequest
+
+@{
+    ViewData["Title"] = "Детайли за отпуск";
+}
+
+<div class="container mt-5">
+    <h2 class="section-title text-center text-dark">📄 Детайли за отпуск</h2>
+
+    <div class="bg-white p-4 shadow rounded mx-auto" style="max-width:600px;">
+        <dl class="row">
+            <dt class="col-sm-4">Тип:</dt>
+            <dd class="col-sm-8">@Model.Type</dd>
+
+            <dt class="col-sm-4">От:</dt>
+            <dd class="col-sm-8">@Model.FromDate.ToShortDateString()</dd>
+
+            <dt class="col-sm-4">До:</dt>
+            <dd class="col-sm-8">@Model.ToDate.ToShortDateString()</dd>
+
+            <dt class="col-sm-4">Половин ден:</dt>
+            <dd class="col-sm-8">@(Model.IsHalfDay ? "Да" : "Не")</dd>
+
+            <dt class="col-sm-4">Одобрена:</dt>
+            <dd class="col-sm-8">@(Model.IsApproved ? "Да" : "Не")</dd>
+
+            @if (!string.IsNullOrEmpty(Model.SickNoteFilePath))
+            {
+                <dt class="col-sm-4">Болничен файл:</dt>
+                <dd class="col-sm-8">
+                    <a href="@Model.SickNoteFilePath" class="btn btn-sm btn-outline-primary" download>⬇️ Изтегли</a>
+                </dd>
+            }
+        </dl>
+
+        <div class="text-center mt-3">
+            <a asp-action="Index" class="btn btn-secondary">Назад</a>
+        </div>
+    </div>
+</div>

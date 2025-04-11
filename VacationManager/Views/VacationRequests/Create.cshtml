@@ -1,0 +1,40 @@
+﻿@model VacationManager.Models.VacationRequest
+
+@{
+    ViewData["Title"] = "Нова заявка за отпуск";
+}
+
+<div class="container mt-4">
+    <h2 class="text-primary mb-4">@ViewData["Title"]</h2>
+
+    <form asp-action="Create" enctype="multipart/form-data" class="border rounded p-4 shadow bg-white">
+        <div asp-validation-summary="All" class="text-danger"></div>
+
+        <div class="mb-3">
+            <label asp-for="Type" class="form-label"></label>
+            <select asp-for="Type" class="form-select" asp-items="Html.GetEnumSelectList<VacationManager.Models.VacationType>()"></select>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="FromDate" class="form-label"></label>
+            <input asp-for="FromDate" class="form-control" type="date" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="ToDate" class="form-label"></label>
+            <input asp-for="ToDate" class="form-control" type="date" />
+        </div>
+
+        <div class="form-check mb-3">
+            <input asp-for="IsHalfDay" class="form-check-input" />
+            <label asp-for="IsHalfDay" class="form-check-label"></label>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="SickNoteUpload" class="form-label">Болничен документ (ако е болничен отпуск)</label>
+            <input asp-for="SickNoteUpload" class="form-control" type="file" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Изпрати</button>
+    </form>
+</div>

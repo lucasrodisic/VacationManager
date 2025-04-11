@@ -1,0 +1,28 @@
+﻿@model VacationManager.Models.Project
+
+@{
+    ViewData["Title"] = "Създай нов проект";
+}
+
+<div class="container mt-5">
+    <h2 class="section-title text-center text-dark">➕ Създай нов проект</h2>
+
+    <form asp-action="Create" class="bg-white p-4 shadow rounded" style="max-width:600px;margin:auto;">
+        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Description" class="form-label"></label>
+            <textarea asp-for="Description" class="form-control" rows="4"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-success">Създай</button>
+        <a asp-action="Index" class="btn btn-secondary ms-2">Назад</a>
+    </form>
+</div>

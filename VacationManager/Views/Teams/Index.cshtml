@@ -1,0 +1,33 @@
+﻿@model IEnumerable<VacationManager.Models.Team>
+
+@{
+    ViewData["Title"] = "Екипи";
+}
+
+<div class="container mt-5">
+    <h2 class="section-title text-dark text-center mb-4">👥 Екипи</h2>
+
+    <div class="row">
+        @foreach (var team in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card p-3 shadow h-100 text-center">
+                    <h5 class="text-success">@team.Name</h5>
+                    <p>
+                        <strong>Проект:</strong> @team.Project?.Name <br />
+                        <strong>Лидер:</strong> @team.TeamLead?.Email
+                    </p>
+                    <div class="d-flex justify-content-center gap-2 mt-2">
+                        <a class="btn btn-sm btn-outline-info" asp-action="Details" asp-route-id="@team.Id">Детайли</a>
+                        <a class="btn btn-sm btn-outline-warning" asp-action="Edit" asp-route-id="@team.Id">Редактирай</a>
+                        <a class="btn btn-sm btn-outline-danger" asp-action="Delete" asp-route-id="@team.Id">Изтрий</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="text-center mt-4">
+        <a class="btn btn-success btn-lg px-4" asp-action="Create">➕ Създай нов екип</a>
+    </div>
+</div>

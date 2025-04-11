@@ -1,0 +1,38 @@
+﻿@model IEnumerable<VacationManager.Models.VacationRequest>
+@using VacationManager.Models
+@{
+    ViewData["Title"] = "Моите отпуски";
+}
+
+<div class="container mt-5">
+    <h2 class="section-title text-center text-dark">📝 Моите отпуски</h2>
+
+    <div class="text-end mb-3">
+        <a class="btn btn-success" asp-action="Create">➕ Нова заявка</a>
+    </div>
+
+    <div class="row">
+        @foreach (var request in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card p-3 shadow h-100">
+                    <h5 class="text-primary">Тип: @request.Type</h5>
+                    <p>
+                        <strong>От:</strong> @request.FromDate.ToShortDateString()<br />
+                        <strong>До:</strong> @request.ToDate.ToShortDateString()<br />
+                        <strong>Половин ден:</strong> @(request.IsHalfDay ? "Да" : "Не")<br />
+                        <strong>Одобрена:</strong> @(request.IsApproved ? "Да" : "Не")
+                    </p>
+                    <div class="d-flex justify-content-center gap-2 mt-2">
+                        <a class="btn btn-sm btn-outline-info" asp-action="Details" asp-route-id="@request.Id">Детайли</a>
+                        @if (!request.IsApproved)
+                        {
+                            <a class="btn btn-sm btn-outline-warning" asp-action="Edit" asp-route-id="@request.Id">Редактирай</a>
+                            <a class="btn btn-sm btn-outline-danger" asp-action="Delete" asp-route-id="@request.Id">Изтрий</a>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

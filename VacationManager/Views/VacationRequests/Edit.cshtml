@@ -1,0 +1,42 @@
+﻿@model VacationManager.Models.VacationRequest
+
+@{
+    ViewData["Title"] = "Редактирай заявка";
+}
+
+<div class="container mt-5">
+    <h2 class="section-title text-center text-dark">✏️ Редактирай заявка за отпуск</h2>
+
+    <form asp-action="Edit" class="bg-white p-4 shadow rounded" style="max-width:600px;margin:auto;">
+        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+        @* ВАЖНО: скрито поле за Id *@
+        <input type="hidden" asp-for="Id" />
+
+        <div class="mb-3">
+            <label asp-for="Type" class="form-label"></label>
+            <select asp-for="Type" class="form-select" asp-items="Html.GetEnumSelectList<VacationManager.Models.VacationType>()"></select>
+            <span asp-validation-for="Type" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="FromDate" class="form-label"></label>
+            <input asp-for="FromDate" class="form-control" type="date" />
+            <span asp-validation-for="FromDate" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="ToDate" class="form-label"></label>
+            <input asp-for="ToDate" class="form-control" type="date" />
+            <span asp-validation-for="ToDate" class="text-danger"></span>
+        </div>
+
+        <div class="form-check mb-3">
+            <input asp-for="IsHalfDay" class="form-check-input" />
+            <label asp-for="IsHalfDay" class="form-check-label"></label>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Запази</button>
+        <a asp-action="Index" class="btn btn-secondary ms-2">Назад</a>
+    </form>
+</div>

@@ -1,0 +1,44 @@
+﻿@model VacationManager.Models.Team
+
+@{
+    ViewData["Title"] = "Детайли за екип";
+}
+
+<div class="container mt-5">
+    <h2 class="section-title text-center text-dark">👥 Детайли за екип</h2>
+
+    <div class="bg-white p-4 shadow rounded mx-auto" style="max-width:600px;">
+        <dl class="row">
+            <dt class="col-sm-4">Име:</dt>
+            <dd class="col-sm-8">@Model.Name</dd>
+
+            <dt class="col-sm-4">Проект:</dt>
+            <dd class="col-sm-8">@Model.Project?.Name</dd>
+
+            <dt class="col-sm-4">Лидер:</dt>
+            <dd class="col-sm-8">@Model.TeamLead?.Email</dd>
+
+            <dt class="col-sm-4">Разработчици:</dt>
+            <dd class="col-sm-8">
+                @if (Model.Developers != null && Model.Developers.Any())
+                {
+                    <ul>
+                        @foreach (var dev in Model.Developers)
+                        {
+                            <li>@dev.Email</li>
+                        }
+                    </ul>
+                }
+                else
+                {
+                    <em>Няма разработчици</em>
+                }
+            </dd>
+        </dl>
+
+        <div class="text-center mt-3">
+            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Редактирай</a>
+            <a asp-action="Index" class="btn btn-secondary ms-2">Назад</a>
+        </div>
+    </div>
+</div>
