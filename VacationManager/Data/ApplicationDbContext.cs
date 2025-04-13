@@ -15,14 +15,14 @@ namespace VacationManager.Data
         {
             base.OnModelCreating(builder);
 
-            // Връзка: Екип -> Лидер
+            
             builder.Entity<Team>()
                 .HasOne(t => t.TeamLead)
                 .WithMany()
                 .HasForeignKey(t => t.TeamLeadId)
                 .OnDelete(DeleteBehavior.SetNull);
 
-            // Връзка: Екип -> Разработчици
+            
             builder.Entity<Team>()
                 .HasMany(t => t.Developers)
                 .WithOne(u => u.Team)

@@ -20,7 +20,7 @@ namespace VacationManager.Controllers
             _env = env;
         }
 
-        // GET: VacationRequests
+        
         public async Task<IActionResult> Index()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -31,13 +31,13 @@ namespace VacationManager.Controllers
             return View(requests);
         }
 
-        // GET: VacationRequests/Create
+        
         public IActionResult Create()
         {
             return View(new VacationRequest());
         }
 
-        // POST: VacationRequests/Create
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(VacationRequest request)
@@ -95,7 +95,7 @@ namespace VacationManager.Controllers
             var isCEO = await _userManager.IsInRoleAsync(approver!, "CEO");
             var isTeamLead = request.User.Team?.TeamLeadId == approver!.Id;
 
-            // позволяваме само CEO или ръководител да одобрят
+           
             if (!isCEO && !isTeamLead)
                 return Forbid();
 

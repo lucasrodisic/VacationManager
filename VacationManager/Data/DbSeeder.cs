@@ -15,7 +15,7 @@ namespace VacationManager.Data
                     await roleManager.CreateAsync(new IdentityRole(role));
             }
 
-            // Създаване на CEO потребител
+           
             var ceoUser = await userManager.FindByEmailAsync("ceo@vacation.com");
 
             if (ceoUser == null)

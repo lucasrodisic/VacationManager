@@ -14,13 +14,13 @@ namespace VacationManager.Controllers
             _context = context;
         }
 
-        // GET: Projects
+      
         public async Task<IActionResult> Index()
         {
             return View(await _context.Projects.ToListAsync());
         }
 
-        // GET: Projects/Details/5
+        
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null) return NotFound();
@@ -33,13 +33,13 @@ namespace VacationManager.Controllers
             return View(project);
         }
 
-        // GET: Projects/Create
+      
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Projects/Create
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name,Description")] Project project)
@@ -53,7 +53,7 @@ namespace VacationManager.Controllers
             return View(project);
         }
 
-        // GET: Projects/Edit/5
+        
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null) return NotFound();
@@ -64,7 +64,7 @@ namespace VacationManager.Controllers
             return View(project);
         }
 
-        // POST: Projects/Edit/5
+      
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description")] Project project)
@@ -90,7 +90,7 @@ namespace VacationManager.Controllers
             return View(project);
         }
 
-        // GET: Projects/Delete/5
+      
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null) return NotFound();
@@ -103,7 +103,7 @@ namespace VacationManager.Controllers
             return View(project);
         }
 
-        // POST: Projects/Delete/5
+       
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

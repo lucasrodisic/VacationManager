@@ -15,7 +15,7 @@ namespace VacationManager.Controllers
             _context = context;
         }
 
-        // GET: Teams
+       
         public async Task<IActionResult> Index()
         {
             var teams = _context.Teams
@@ -24,7 +24,7 @@ namespace VacationManager.Controllers
             return View(await teams.ToListAsync());
         }
 
-        // GET: Teams/Details/5
+        
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null) return NotFound();
@@ -40,7 +40,7 @@ namespace VacationManager.Controllers
             return View(team);
         }
 
-        // GET: Teams/Create
+      
         public IActionResult Create()
         {
             ViewData["ProjectId"] = new SelectList(_context.Projects, "Id", "Name");
@@ -48,7 +48,7 @@ namespace VacationManager.Controllers
             return View();
         }
 
-        // POST: Teams/Create
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name,ProjectId,TeamLeadId")] Team team)
@@ -64,7 +64,7 @@ namespace VacationManager.Controllers
             return View(team);
         }
 
-        // GET: Teams/Edit/5
+        
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null) return NotFound();
@@ -77,7 +77,7 @@ namespace VacationManager.Controllers
             return View(team);
         }
 
-        // POST: Teams/Edit/5
+       
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,ProjectId,TeamLeadId")] Team team)
@@ -106,7 +106,6 @@ namespace VacationManager.Controllers
             return View(team);
         }
 
-        // GET: Teams/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null) return NotFound();
@@ -120,7 +119,7 @@ namespace VacationManager.Controllers
             return View(team);
         }
 
-        // POST: Teams/Delete/5
+        
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

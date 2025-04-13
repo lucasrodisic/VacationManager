@@ -8,7 +8,7 @@ namespace VacationManager.Models
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
 
-        // Navigation properties
+        
         public int? TeamId { get; set; }
         public Team? Team { get; set; }
 

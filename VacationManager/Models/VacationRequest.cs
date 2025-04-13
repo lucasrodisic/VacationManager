@@ -37,7 +37,7 @@ namespace VacationManager.Models
         [Display(Name = "Одобрена")]
         public bool IsApproved { get; set; } = false;
 
-        // 👉 НЕ маркираме с [Required] – ще се сетне в контролера
+        
         public string? UserId { get; set; }
         public ApplicationUser? User { get; set; }
 
